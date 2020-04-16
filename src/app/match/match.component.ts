@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatchService, Team} from '../match.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-match',
@@ -8,10 +9,10 @@ import {MatchService, Team} from '../match.service';
 })
 export class MatchComponent implements OnInit {
   teamList: Team[];
-  chosenHomeTeam: string;
-  chosenAwayTeam: string;
+  chosenHomeTeam: Team;
+  chosenAwayTeam: Team;
 
-  constructor(private matchService: MatchService) {
+  constructor(private matchService: MatchService, private router: Router) {
     this.teamList = matchService.getAllTeams();
   }
 
@@ -21,8 +22,9 @@ export class MatchComponent implements OnInit {
   save() {
     this.matchService.addMatch({
       id: null,
-      homeTeamName: this.chosenHomeTeam,
-      awayTeamName: this.chosenAwayTeam
+      homeTeamName: this.chosenHomeTeam.name,
+      awayTeamName: this.chosenAwayTeam.name
     });
+    this.router.navigateByUrl('/matchList');
   }
 }
