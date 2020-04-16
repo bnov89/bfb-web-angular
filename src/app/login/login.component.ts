@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AppService} from '../app.service';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
@@ -19,6 +19,9 @@ export class LoginComponent {
   }
 
   login() {
+    // if (this.credentials.username === 'bartek' && this.credentials.password === 'nowak') {
+    //   return true;
+    // }
     this.app.authenticate(this.credentials, () => {
       this.router.navigateByUrl('/');
     });

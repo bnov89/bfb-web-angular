@@ -1,0 +1,18 @@
+<div>
+  <form (submit)="save()">
+    <label for="homeTeam">Home team</label>
+    <select [(ngModel)]="chosenHomeTeam" id="homeTeam" name="homeTeam">
+      <option *ngFor="let team of teamList" [value]="team">
+        {{team.name}}
+      </option>
+    </select>
+
+    <label for="awayTeam">Away team</label>
+    <select [(ngModel)]="chosenAwayTeam" id="awayTeam" name="awayTeam">
+      <option *ngFor="let team of teamList" [value]="team">
+        {{team.name}}
+      </option>
+    </select>
+    <button type="submit">Submit</button>
+  </form>
+</div>

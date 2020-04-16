@@ -13,7 +13,7 @@ export class AppComponent {
 
 
   constructor(private app: AppService, private http: HttpClient, private router: Router) {
-    this.app.authenticate(undefined, undefined);
+    // this.app.authenticate(undefined, undefined);
     // http.get('http://localhost:8080/user/login/bartek').subscribe();
   }
 
