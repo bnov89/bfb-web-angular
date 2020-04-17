@@ -27,11 +27,14 @@ export class LoginGuard implements CanActivate {
 }
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'home'},
+  {
+    path: '', component: HomeComponent, canActivate: [LoginGuard], children: [
+      {path: 'matchList', component: MatchListComponent, canActivate: [LoginGuard]},
+      {path: 'match', component: MatchComponent, canActivate: [LoginGuard]}
+    ]
+  },
   {path: 'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent, canActivate: [LoginGuard]},
-  {path: 'matchList', component: MatchListComponent, canActivate: [LoginGuard]},
-  {path: 'match', component: MatchComponent, canActivate: [LoginGuard]}
+
 ];
 
 @Injectable()
