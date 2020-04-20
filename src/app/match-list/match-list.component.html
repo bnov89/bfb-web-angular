@@ -2,7 +2,7 @@
 <div>
   <ul>
     <li *ngFor="let match of matchList">
-        {{match.homeTeamName}} : {{match.awayTeamName}}
+        {{match.homeTeamName}} : {{match.awayTeamName}}<button (click)="showMatchToBet(match.id)"></button>
     </li>
   </ul>
 

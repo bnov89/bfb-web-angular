@@ -1,0 +1,16 @@
+<div>
+  <p>bet works!</p>
+  <form>
+    <label>{{matchToBet.homeTeamName}}</label>
+    <input name="homeTeamGoals"/>
+    :
+    <input name="awayTeamGoals"/>
+    <label>{{matchToBet.awayTeamName}}</label>
+  </form>
+  <p>Other bets</p>
+  <ul>
+    <li *ngFor="let bet of betsList">
+      {{bet.homeTeamGoals}}: {{bet.awayTeamGoals}}
+    </li>
+  </ul>
+</div>

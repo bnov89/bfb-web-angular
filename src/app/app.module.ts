@@ -10,6 +10,7 @@ import {AppService} from './app.service';
 import {FormsModule} from '@angular/forms';
 import {MatchListComponent} from './match-list/match-list.component';
 import {MatchComponent} from './match/match.component';
+import {BetComponent} from './bet/bet.component';
 
 @Injectable()
 export class LoginGuard implements CanActivate {
@@ -30,7 +31,9 @@ const routes: Routes = [
   {
     path: '', component: HomeComponent, canActivate: [LoginGuard], children: [
       {path: 'matchList', component: MatchListComponent, canActivate: [LoginGuard]},
-      {path: 'match', component: MatchComponent, canActivate: [LoginGuard]}
+      {path: 'match', component: MatchComponent, canActivate: [LoginGuard]},
+      {path: 'bet', component: BetComponent, canActivate: [LoginGuard]}
+
     ]
   },
   {path: 'login', component: LoginComponent},
@@ -55,7 +58,8 @@ export class XhrInterceptor implements HttpInterceptor {
     LoginComponent,
     HomeComponent,
     MatchListComponent,
-    MatchComponent
+    MatchComponent,
+    BetComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -63,7 +67,11 @@ export class XhrInterceptor implements HttpInterceptor {
     HttpClientModule,
     FormsModule
   ],
-  providers: [LoginGuard, AppService, {provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true}],
+  providers: [LoginGuard, AppService, BetComponent, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: XhrInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
