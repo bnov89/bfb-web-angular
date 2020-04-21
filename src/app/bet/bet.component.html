@@ -1,11 +1,12 @@
 <div>
   <p>bet works!</p>
-  <form>
+  <form role="form" (submit)="saveBet()">
     <label>{{matchToBet.homeTeamName}}</label>
-    <input name="homeTeamGoals"/>
+    <input name="homeTeamGoals" [(ngModel)]="homeTeamGoals"/>
     :
-    <input name="awayTeamGoals"/>
+    <input name="awayTeamGoals" [(ngModel)]="awayTeamGoals"/>
     <label>{{matchToBet.awayTeamName}}</label>
+    <button type="submit">Submit</button>
   </form>
   <p>Other bets</p>
   <ul>

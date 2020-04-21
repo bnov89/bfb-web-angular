@@ -127,4 +127,9 @@ export class MatchService {
   getBetsByMatchId(matchId: number) {
     return this.betsList.filter(bet => bet.matchId === matchId);
   }
+
+  saveBet(bet: Bet) {
+    bet.id = this.betsList.length;
+    this.betsList.push(bet);
+  }
 }
