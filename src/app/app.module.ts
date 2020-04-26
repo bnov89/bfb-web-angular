@@ -11,6 +11,10 @@ import {FormsModule} from '@angular/forms';
 import {MatchListComponent} from './match-list/match-list.component';
 import {MatchComponent} from './match/match.component';
 import {BetComponent} from './bet/bet.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 
 @Injectable()
 export class LoginGuard implements CanActivate {
@@ -65,7 +69,11 @@ export class XhrInterceptor implements HttpInterceptor {
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [LoginGuard, AppService, BetComponent, {
     provide: HTTP_INTERCEPTORS,
