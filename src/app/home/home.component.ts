@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import {AppService} from '../app.service';
 import {HttpClient} from '@angular/common/http';
+import {MediaMatcher} from '@angular/cdk/layout';
 
 export class Greeting {
   id: string;
@@ -12,8 +13,10 @@ export class Greeting {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnDestroy {
 
+  mobileQuery: MediaQueryList;
+  private mobileQueryListener: () => void;
 
   title = 'Demo';
   greeting: Greeting = {
@@ -21,7 +24,10 @@ export class HomeComponent {
     name: ''
   };
 
-  constructor(private app: AppService, private http: HttpClient) {
+  constructor(private app: AppService, private http: HttpClient, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this.mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this.mobileQueryListener);
     // const headers = new HttpHeaders({
     //   authorization: 'Basic ' + btoa('bartek' + ':' + 'nowak')
     // });
@@ -35,6 +41,10 @@ export class HomeComponent {
 
   authenticated() {
     return this.app.authenticated;
+  }
+
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this.mobileQueryListener);
   }
 
 }
