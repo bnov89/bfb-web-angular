@@ -1,18 +1,19 @@
-<div>
+<div class="form">
   <form (submit)="save()">
-    <label for="homeTeam">Home team</label>
-    <select [(ngModel)]="chosenHomeTeam" id="homeTeam" name="homeTeam">
-      <option *ngFor="let team of teamList" [ngValue]="team">
-        {{team.name}}
-      </option>
-    </select>
-
-    <label for="awayTeam">Away team</label>
-    <select [(ngModel)]="chosenAwayTeam" id="awayTeam" name="awayTeam">
-      <option *ngFor="let team of teamList" [ngValue]="team">
-        {{team.name}}
-      </option>
-    </select>
-    <button type="submit">Submit</button>
+    <mat-form-field>
+      <mat-label>Select HOME team</mat-label>
+      <mat-select [(value)]="chosenHomeTeam">
+        <mat-option *ngFor="let team of teamList" [value]="team">{{team.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+      <mat-label>Select AWAY team</mat-label>
+      <mat-select [(value)]="chosenAwayTeam">
+        <mat-option *ngFor="let team of teamList" [value]="team">{{team.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br/>
+    <button mat-raised-button type="submit" color="primary">Add match</button>
   </form>
 </div>

@@ -19,6 +19,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 
 @Injectable()
 export class LoginGuard implements CanActivate {
@@ -81,7 +82,8 @@ export class XhrInterceptor implements HttpInterceptor {
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
   ],
   providers: [LoginGuard, AppService, BetComponent, {
     provide: HTTP_INTERCEPTORS,
