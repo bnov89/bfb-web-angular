@@ -1,0 +1,18 @@
+<div>
+  <mat-accordion *ngFor="let match of betsByMatch; index as i">
+    <mat-expansion-panel (opened)="panelOpenState[i] = true"
+                         (closed)="panelOpenState[i] = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div>{{match.homeTeam}}</div>
+          <div>{{match.awayTeam}}</div>
+          <div>20.12.2020</div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <button mat-raised-button color="primary" (click)="openBetView()">Bet</button>
+      <li *ngFor="let bet of match.bets">
+        <span>{{bet.homeGoals}}:{{bet.awayGoals}}</span>
+      </li>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

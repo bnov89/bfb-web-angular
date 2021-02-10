@@ -1,0 +1,13 @@
+<div id="team-container">
+  <div class="horizontal-center">
+    <form (submit)="save()">
+      <mat-form-field>
+        <mat-label>Team name</mat-label>
+        <input matInput type="text" name="username" [(ngModel)]="teamName">
+      </mat-form-field>
+      <div class="horizontal-center">
+        <button mat-stroked-button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

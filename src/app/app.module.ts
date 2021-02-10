@@ -20,6 +20,12 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {BetListComponent} from './bet-list/bet-list.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { TeamComponent } from './team/team.component';
+import { TeamListComponent } from './team-list/team-list.component';
 
 @Injectable()
 export class LoginGuard implements CanActivate {
@@ -41,9 +47,11 @@ const routes: Routes = [
     path: '', component: HomeComponent, canActivate: [LoginGuard], children: [
       {path: 'matchList', component: MatchListComponent, canActivate: [LoginGuard]},
       {path: 'match', component: MatchComponent, canActivate: [LoginGuard]},
-      {path: 'bet', component: BetComponent, canActivate: [LoginGuard]}
-
-    ]
+      {path: 'bet', component: BetComponent, canActivate: [LoginGuard]},
+      {path: 'bets', component: BetListComponent, canActivate: [LoginGuard]},
+      {path: 'team', component: TeamComponent, canActivate: [LoginGuard]},
+      {path: 'teams', component: TeamListComponent, canActivate: [LoginGuard]}
+      ]
   },
   {path: 'login', component: LoginComponent},
 
@@ -68,7 +76,10 @@ export class XhrInterceptor implements HttpInterceptor {
     HomeComponent,
     MatchListComponent,
     MatchComponent,
-    BetComponent
+    BetComponent,
+    BetListComponent,
+    TeamComponent,
+    TeamListComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -83,7 +94,10 @@ export class XhrInterceptor implements HttpInterceptor {
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule,
+    MatExpansionModule,
+    MatGridListModule
   ],
   providers: [LoginGuard, AppService, BetComponent, {
     provide: HTTP_INTERCEPTORS,

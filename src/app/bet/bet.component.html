@@ -1,17 +1,25 @@
-<div>
-  <p>bet works!</p>
-  <form role="form" (submit)="saveBet()">
-    <label>{{matchToBet.homeTeamName}}</label>
-    <input name="homeTeamGoals" [(ngModel)]="homeTeamGoals"/>
-    :
-    <input name="awayTeamGoals" [(ngModel)]="awayTeamGoals"/>
-    <label>{{matchToBet.awayTeamName}}</label>
-    <button type="submit">Submit</button>
-  </form>
-  <p>Other bets</p>
-  <ul>
-    <li *ngFor="let bet of betsList">
-      {{bet.homeTeamGoals}}: {{bet.awayTeamGoals}}
-    </li>
-  </ul>
+<div id="bet-container">
+  <div class="horizontal-center">
+    <form (submit)="saveBet()">
+      <mat-form-field class="bfb-block">
+        <mat-label>Choose match to bet:</mat-label>
+        <mat-select [(value)]="matchId">
+          <mat-option *ngFor="let match of matches" [value]="match.id">
+            {{match.home.name}}:{{match.away.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="bfb-block">
+        <mat-label>Home team goals</mat-label>
+        <input matInput name="homeTeamGoals" [(ngModel)]="homeTeamGoals">
+      </mat-form-field>
+      <mat-form-field class="bfb-block">
+        <mat-label>Away team goals</mat-label>
+        <input matInput name="awayTeamGoals" [(ngModel)]="awayTeamGoals">
+      </mat-form-field>
+      <div class="horizontal-center">
+        <button mat-stroked-button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
 </div>

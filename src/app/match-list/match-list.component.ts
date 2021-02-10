@@ -10,10 +10,10 @@ import {Router} from '@angular/router';
 })
 export class MatchListComponent implements OnInit {
 
-  matchList: Match[];
-
+  matchList: any;
+  displayedColumns: string[] = ['homeTeamName', 'awayTeamName'];
   constructor(private matchService: MatchService, private betComponent: BetComponent, private router: Router) {
-    this.matchList = matchService.getAllMatches();
+    matchService.getAllMatches().subscribe(value => this.matchList = value );
   }
 
   ngOnInit() {

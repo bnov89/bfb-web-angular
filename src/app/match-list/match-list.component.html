@@ -1,9 +1,14 @@
-<p>match-list works!</p>
 <div>
-  <ul>
-    <li *ngFor="let match of matchList">
-        {{match.homeTeamName}} : {{match.awayTeamName}}<button (click)="showMatchToBet(match.id)"></button>
-    </li>
-  </ul>
-
+  <mat-table [dataSource]="matchList">
+    <ng-container matColumnDef="homeTeamName">
+      <mat-header-cell *matHeaderCellDef>Home team</mat-header-cell>
+      <mat-cell *matCellDef="let match"> {{match.home.name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="awayTeamName">
+      <mat-header-cell *matHeaderCellDef> Away team</mat-header-cell>
+      <mat-cell *matCellDef="let match"> {{match.away.name}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 </div>
